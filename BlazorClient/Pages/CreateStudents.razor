@@ -1,0 +1,92 @@
+﻿@page "/students/create"
+@inject NavigationManager NavManager
+@inject HttpClient httpClient
+
+
+<h1>Add a Student</h1>
+
+
+@if (students != null)  // Insert form
+
+{
+
+    <NavLink href="/students" class="btn btn-success">Return</NavLink>
+    <EditForm Model="@student" OnValidSubmit="@HandleAdd">
+
+        <DataAnnotationsValidator />
+
+        <ValidationSummary />
+
+
+        <InputText placeholder="First Name" id="firstName" @bind-Value="@student.FirstName" />
+
+        <br />
+
+        <InputText placeholder="Last Name" id="lastName" @bind-Value="@student.LastName" />
+
+        <br />
+
+        <InputText placeholder="School" id="school" @bind-Value="@student.School" />
+
+        <br />
+
+        <button type="submit">Submit</button>
+
+    </EditForm>
+
+
+    @code {
+
+        private Student student = new Student();
+
+        public void returnPage() {
+           
+        }
+        private async void HandleAdd()
+        {
+
+            string endpoint = $"{baseUrl}api/students";
+
+
+            student.StudentId = Guid.NewGuid().ToString();
+
+
+            await httpClient.PostAsJsonAsync(endpoint, student);
+
+            await load();
+
+            StateHasChanged();
+            
+            NavManager.NavigateTo("/students"); // causes the page to get automatically refreshed
+
+        }
+
+    }
+
+}
+
+
+
+@code {
+
+    Student s;
+
+    Student[] students;
+
+    string baseUrl = "http://localhost:32792/";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        await load();
+
+    }
+    protected async Task load()
+    {
+
+        students = await httpClient.GetFromJsonAsync<Student[]>($"{baseUrl}api/students");
+
+    }
+
+}

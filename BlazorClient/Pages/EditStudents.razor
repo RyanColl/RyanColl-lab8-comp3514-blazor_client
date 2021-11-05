@@ -1,0 +1,87 @@
+﻿@page "/students/edit/{id}"
+@inject NavigationManager NavManager
+@inject HttpClient httpClient
+
+
+<h1>Edit a Student</h1>
+
+
+@if (students != null) // Update
+
+{
+    <NavLink href="/students" class="btn btn-success">Return</NavLink>
+    <EditForm Model="@s" OnValidSubmit="@HandleUpdate">
+
+        <DataAnnotationsValidator />
+
+        <ValidationSummary />
+
+
+        <InputText placeholder="First Name" id="firstName" @bind-Value="@s.FirstName" />
+
+        <br />
+
+        <InputText placeholder="Last Name" id="lastName" @bind-Value="@s.LastName" />
+
+        <br />
+
+        <InputText placeholder="School" id="school" @bind-Value="@s.School" />
+
+        <br />
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+
+        @code {
+
+            private Student student = new Student();
+
+            
+            private async void HandleUpdate()
+            {
+
+                string endpoint = $"{baseUrl}api/students/{Id}";
+
+
+                await httpClient.PutAsJsonAsync(endpoint, s);
+
+                await load();
+
+                StateHasChanged();
+                
+                NavManager.NavigateTo("/students"); // causes the page to get automatically refreshed
+
+            }
+
+        }
+
+    </EditForm>
+
+}
+
+
+
+
+@code {
+
+    Student s;
+
+    Student[] students;
+
+    [Parameter]
+    public string Id {get; set;}
+    string baseUrl = "http://localhost:32792/";
+    protected override async Task OnInitializedAsync()
+    {
+
+        await load();
+
+    }
+    protected async Task load()
+    {
+
+        students = await httpClient.GetFromJsonAsync<Student[]>($"{baseUrl}api/students");
+        s = students.Where(f => f.StudentId == Id).FirstOrDefault();
+    }
+
+}

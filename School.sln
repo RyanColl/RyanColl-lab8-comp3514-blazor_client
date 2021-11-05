@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolLibrary", "SchoolLibrary\SchoolLibrary.csproj", "{64940B93-55CC-40FD-ACF3-5FC30CA31B2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolAPI", "SchoolAPI\SchoolAPI.csproj", "{A615F41B-D3B5-4EDC-9D6A-763DFD8C0D5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorClient", "BlazorClient\BlazorClient.csproj", "{7814449F-F9C0-4A46-9A68-60F8765FFC9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64940B93-55CC-40FD-ACF3-5FC30CA31B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64940B93-55CC-40FD-ACF3-5FC30CA31B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64940B93-55CC-40FD-ACF3-5FC30CA31B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64940B93-55CC-40FD-ACF3-5FC30CA31B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A615F41B-D3B5-4EDC-9D6A-763DFD8C0D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A615F41B-D3B5-4EDC-9D6A-763DFD8C0D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A615F41B-D3B5-4EDC-9D6A-763DFD8C0D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A615F41B-D3B5-4EDC-9D6A-763DFD8C0D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7814449F-F9C0-4A46-9A68-60F8765FFC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7814449F-F9C0-4A46-9A68-60F8765FFC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7814449F-F9C0-4A46-9A68-60F8765FFC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7814449F-F9C0-4A46-9A68-60F8765FFC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB145A5C-D3A9-4919-AECF-2B417A9D9A7F}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.StandardHeader = $4
+		$0.VersionControlPolicy = $5
+	EndGlobalSection
+EndGlobal

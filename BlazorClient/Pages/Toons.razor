@@ -1,0 +1,66 @@
+﻿@page "/toons"
+@inject HttpClient Http
+
+<h1>Toon Characters</h1>
+ 
+<p>This component demonstrates fetching data toon data from an api.</p>
+
+@if (toonlist == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Occupation</th>
+                <th>Gender</th>
+                <th>Picture</th>
+                <th>Votes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var toon in toonlist)
+            {
+                <tr>
+                    <td>@toon.Id</td>
+                    <td>@toon.FirstName @toon.LastName</td>
+                    <td>@toon.Occupation</td>
+                    <td>@toon.Gender</td>
+                    <td><img src="@toon.PictureUrl" /></td>
+                    <td>@toon.votes</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Toon[] toonlist;
+
+    protected override async Task OnInitializedAsync()
+    {
+        toonlist = await Http.GetFromJsonAsync<Toon[]>("https://api4all.azurewebsites.net/api/people");
+    }
+
+    public class Toon
+    {
+        public int Id { get; set; }
+
+        public string LastName { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string Occupation { get; set; }
+
+        public string Gender { get; set; }
+
+        public string PictureUrl { get; set; }
+
+        public int votes { get; set; }
+
+    }
+}
